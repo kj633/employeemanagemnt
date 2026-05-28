@@ -2,14 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
-
-/**
- * SIMPLE EMPLOYEE MVP - GUI Edition
- * All OOP concepts (V1.0 - V4.0) demonstrated in a clean window.
- * No terminal commands needed – just click Run.
- */
-
-// ==================== EMPLOYEE CLASS (ENCAPSULATION, STATIC, INHERITANCE BASE) ====================
+ 
 class Employee {
     private static int nextId = 1000;
     private static int totalEmployees = 0;
@@ -49,7 +42,6 @@ class Employee {
     }
 }
 
-// ==================== MANAGER (INHERITANCE + OVERRIDING) ====================
 class Manager extends Employee {
     private String department;
     public Manager(String name, double salary, String department) {
@@ -66,7 +58,6 @@ class Manager extends Employee {
     }
 }
 
-// ==================== DEVELOPER (INHERITANCE + OVERRIDING) ====================
 class Developer extends Employee {
     private String language;
     public Developer(String name, double salary, String language) {
@@ -83,7 +74,6 @@ class Developer extends Employee {
     }
 }
 
-// ==================== MAIN GUI CLASS ====================
 public class EmployeeMVP_GUI_Simple extends JFrame {
     private ArrayList<Employee> employees;
     private JTextArea displayArea;
@@ -98,7 +88,7 @@ public class EmployeeMVP_GUI_Simple extends JFrame {
         setLocationRelativeTo(null); // center on screen
         setLayout(new BorderLayout(10, 10));
 
-        // ---- TOP PANEL: Input Form ----
+        
         JPanel formPanel = new JPanel(new GridBagLayout());
         formPanel.setBorder(BorderFactory.createTitledBorder("Add New Employee"));
         GridBagConstraints gbc = new GridBagConstraints();
@@ -146,7 +136,7 @@ public class EmployeeMVP_GUI_Simple extends JFrame {
 
         add(formPanel, BorderLayout.NORTH);
 
-        // ---- CENTER: Display Area ----
+        
         displayArea = new JTextArea();
         displayArea.setEditable(false);
         displayArea.setFont(new Font("Monospaced", Font.PLAIN, 12));
@@ -154,22 +144,22 @@ public class EmployeeMVP_GUI_Simple extends JFrame {
         scrollPane.setBorder(BorderFactory.createTitledBorder("Employee List (with Bonuses)"));
         add(scrollPane, BorderLayout.CENTER);
 
-        // ---- BOTTOM: Status Bar ----
+        
         JLabel statusBar = new JLabel(" OOP Concepts: Classes, Encapsulation, Inheritance, Polymorphism, Static");
         statusBar.setBorder(BorderFactory.createEtchedBorder());
         add(statusBar, BorderLayout.SOUTH);
 
-        // ---- Add some sample employees ----
+        
         employees.add(new Manager("Sarah Johnson", 95000, "IT"));
         employees.add(new Developer("Mike Chen", 82000, "Java"));
         employees.add(new Developer("Elena Rodriguez", 79000, "Python"));
         employees.add(new Employee("John Smith", 45000));
 
-        // ---- Button Actions ----
+        
         addBtn.addActionListener(e -> addEmployee());
         refreshBtn.addActionListener(e -> refreshDisplay());
 
-        // Show initial list
+        
         refreshDisplay();
     }
 
